@@ -134,3 +134,101 @@ dialog: # Translations for the plugin's dialog UIs
           Are you sure that you want to <b><red>delete</red></b> the <aqua>selected changelog</aqua>?
           
           Please note that this action <b><red>CANNOT BE UNDONE</red></b>!
+
+book: # Translations for the plugin's book UIs
+  error: "<red>An unexpected error occurred while trying to process action:"
+  popup:
+    confirm: "<translate:icon.confirm> <green><b>Confirm"
+    confirm_danger: "<translate:icon.warning> <red><b>Confirm"
+    cancel: "<translate:icon.deny> <dark_red><b>Cancel"
+    close: "<translate:icon.confirm> <green>Ok"
+  editor: # The UI used to publish and edit changelogs
+    create: # Translations specific to the creation mode of the editor
+      title: "<gradient:#a366ff:#9999ff><b>Create Changelog"
+      subtitle: "This action will <green>create</green> a new changelog entry <aqua>#<arg:0>"
+      commit_button: "<translate:icon.changelog> <aqua><b>Publish Changelog"
+      success: "<translate:icon.confirm> <green>Successfully published a new changelog!"
+    edit: # Translations specific to the "edit existing" mode of the editor
+      title: "<gradient:#a366ff:#9999ff><b>Edit Changelog"
+      subtitle: "This action will <light_purple>update</light_purple> the content of changelog <aqua>#<arg:0>"
+      commit_button: "<translate:icon.letter> <aqua><b>Apply Changes"
+      success: "<translate:icon.confirm> <green>Changes applied successfully!"
+    hint: |-
+      Add <green>lines</green> to the new changelog below. Formatting in <rainbow>MiniMessage</rainbow> is supported!
+      Dashes <gray>(<b>-</b>)</gray> are added automatically. Use <red>one line</red> to describe an <red>individual</red> change.
+      You can see a <green>preview</green> of your new changelog below here:
+    empty_preview: "<translate:icon.search> <u><gray>Add a line using the text field below to see a preview."
+    restored_session: "<translate:icon.info> <green>This session was restored from the last time you were using the editor."
+    input:
+      contents: "Line Content"
+      author: "Author <gray>(optional)</gray>"
+    button:
+      add_line: "<translate:icon.speech_bubble> <green><b>Add Line"
+      edit_line: "<translate:icon.confirm> <light_purple><b>Edit Line"
+      close: "<translate:icon.deny> <red><b>Close"
+    line_action:
+      format: "<dark_gray>[<arg:0>]"
+      edit: "<light_purple><hover:show_text:'<light_purple>✎ Edit line'>✎"
+      remove: "<red><hover:show_text:'<red>❌ Remove line'>❌"
+    confirm_close:
+      button:
+        save_session: "<translate:icon.letter> <green><b>Save and Close"
+        discard_session: "<translate:icon.warning> <red><b>Discard and Close"
+        cancel: "<translate:icon.back> <gold><b>Keep Editing"
+      content: |-
+        Are you sure that you want to <red>discard</red> all of your changes?
+        
+        You have the option to <green>save your work</green> until the <aqua>next time</aqua> you open the editor.
+        If you do not want to <green>save the session</green> and <yellow>start over</yellow> next time, you can <red>discard</red> it.
+        You also have the option to <gold>go back</gold> to editing your current changelog.
+        
+        <translate:icon.attention> Note that <green>saved</green> sessions <red><b>WILL NOT</b></red> survive server <red>restarts</red>!
+    error:
+      create:
+        internal_error: "<translate:icon.deny> <red>An internal error occurred while trying to publish your dialog.\n\nMore details have been logged to the server's console."
+      edit:
+        entry_deleted: "<translate:icon.deny> <red>The changelog entry has been deleted during editing."
+        internal_error: "<translate:icon.deny> <red>An internal error occurred while trying to apply your changes.\n\nMore details have been logged to the server's console."
+      no_lines: "<translate:icon.deny> <red>Please specify at least one changelog line."
+      add_empty_line: "<translate:icon.deny> <red>Please specify the content of the line first."
+      no_permission: "<translate:icon.deny> <red>You don't have permission to perform this action!"
+  changelog: # The UI used by players to view the server's changelogs
+    title: "<translate:icon.changelog> <gradient:#a366ff:#9999ff><b>Server Changelog"
+    header: |-
+      This menu shows you an overview of <green>what has changed</green> on our server recently!
+      New server changes will appear <red>in red</red>.
+    empty: "<red>There are no changelogs yet, the server must've just released!"
+    # "entry" is used to define the format for a normal changelog entry, while "entry_unread" is
+    # used to format changelog entries the player hasn't read yet (parts are formatted bigger and in red)!
+    # The following arguments are provided:
+    #  <arg:0>: The changelog's publication date/time, the format of this can be changed in "config.yml"!
+    #  <arg:1>: The actual content/lines of the changelog, already formatted using "entry_line" (see below)
+    #  <arg:2>: The (formatted) author of the changelog
+    entry: |-
+      <dark_gray><strikethrough>                            <reset> <gradient:green:red><u>Changelog from <arg:0></u></gradient> <dark_gray><strikethrough>                            
+      
+      <reset><arg:1>
+      
+      <reset><gray>Published by <white><arg:2></white></gray>
+    entry_unread: |-
+      <red><b><strikethrough>                         <reset> <translate:icon.attention> <gradient:green:red><u>Changelog from <arg:0></u></gradient> <translate:icon.attention> <red><b><strikethrough>                         
+      
+      <reset><arg:1>
+      
+      <reset><gray>Published by <white><arg:2></white></gray>
+    entry_line: "<gray>- <reset><arg:0>" # The format for a single changelog line (adds a gray dash in front)
+    unspecified_author: "<dark_red>Unspecified" # The author that will be shown when this field was left empty during publishing
+    button:
+      close: "<translate:icon.confirm> <green>Exit"
+    read: "<prefix><translate:icon.confirm> <green>Marked <yellow><arg:0></yellow> entries as read!"
+    manage:
+      changelog_action:
+        format: "<dark_gray>[<arg:0>]"
+        edit: "<aqua><hover:show_text:'<aqua>✎ Edit changelog'>✎"
+        delete: "<red><hover:show_text:'<red>❌ Delete changelog'>❌"
+      confirm_delete:
+        title: "<translate:icon.warning> <red><b>Confirm Deletion"
+        content: |-
+          Are you sure that you want to <b><red>delete</red></b> the <aqua>selected changelog</aqua>?
+          
+          Please note that this action <b><red>CANNOT BE UNDONE</red></b>!
